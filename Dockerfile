@@ -1,17 +1,13 @@
 FROM node:8
-
 # Create app directory
 WORKDIR /usr/src/app
-
 # Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
 COPY package*.json ./
 
-RUN npm install
-
-# Bundle app source
+RUN npm install --silent
+# Copy app source code
 COPY . .
 
-EXPOSE 8080
-
-CMD [ "npm", "start" ]
+#Expose port and start application
+EXPOSE 3000
+CMD ["npm", "start"]
